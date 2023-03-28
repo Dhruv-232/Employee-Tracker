@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS movies_db;
-CREATE DATABASE movies_db;
+DROP DATABASE IF EXISTS employee_info_db;
+CREATE DATABASE employee_info_db;
 
 USE employee_info_db;
 
@@ -23,7 +23,7 @@ CREATE TABLE employee (
     first_name VARCHAR(30) NOT NULL,
     last_name VARCHAR(30) NOT NULL,
     role_id INT NOT NULL,
-    manager_id INT NOT NULL,
+    manager_id INT,
     FOREIGN KEY (role_id)
     REFERENCES role(id)
     ON DELETE CASCADE,
