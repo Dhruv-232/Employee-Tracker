@@ -5,6 +5,12 @@ class DBA {
     constructor(connection) {
       this.connection = connection;
     }
+    fetchAllDepartments() {
+        return this.connection.promise().query(
+          "SELECT department.id, department.name FROM department;"
+        );
+      }
+    
   }
   module.exports = new DBA(connection);
   
