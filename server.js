@@ -23,7 +23,12 @@ function userInput() {
     ]).then(response => {
       switch (response.options) {
         case "View All Employees":
-          viewAllEmployees(() => getUserInput());
+          db.fetchAllEmployees()
+            .then(([employees]) => {
+              console.log("\n");
+              console.table(employees)
+            });
+            userInput();
           break;
         case "Add Employee":
           addEmployee(() => getUserInput());
