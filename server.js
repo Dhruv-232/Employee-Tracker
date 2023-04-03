@@ -32,7 +32,14 @@ function userInput() {
           updateRole(() => getUserInput());
           break;
         case "View All Roles":
-          viewAllRoles(() => getUserInput());
+          console.log("Case ViewAllRoles");
+          db.fetchAllRoles()
+            .then(([roles]) => {
+              console.log("\n");
+              console.table(roles)
+            });
+            userInput();
+          
           break;
         case "Add Role":
           addRole(() => getUserInput());
