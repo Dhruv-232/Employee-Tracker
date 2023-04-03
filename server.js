@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql");
 const cTable = require("console.table");
-const db = require(".");
+const db = require("./db/dba");
 
 function userInput() {
     inquirer.prompt([
@@ -38,7 +38,14 @@ function userInput() {
           addRole(() => getUserInput());
           break;
         case "View All Departments":
-          viewAllDepartments(() => getUserInput());
+          // viewAllDepartments(() => {
+            db.fetchAllDepartments()
+            .then(([depts]) => {
+              console.log("\n");
+              console.table(depts)
+            });
+            userInput();
+          // });
           break;
         case "Add Department":
           addDepartment(() => getUserInput());
@@ -53,4 +60,4 @@ function userInput() {
       }
     });
   }
-  
+  userInput();
