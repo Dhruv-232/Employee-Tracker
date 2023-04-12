@@ -24,5 +24,11 @@ class DBA {
         );
     }
 
+    addDepartment(name) {
+        return this.connection.promise().query(
+            "INSERT into department set ?", name
+        );
+    }
+
 }
 module.exports = new DBA(connection);

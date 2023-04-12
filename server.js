@@ -67,7 +67,19 @@ function userInput() {
           // });
           break;
         case "Add Department":
-          addDepartment(() => getUserInput());
+          prompt([
+            {
+              name: "name",
+              message: "Give the name of the department"
+            }
+          ])
+          .then(resp => {
+            let name = resp.name;
+            db.addDepartment(name)
+            .then(() =>{ 
+              console.log(name + " is added to department table")
+              getUserInput})
+          })
           break;
         case "Quit":
           console.log("Press Ctrl + C to exit");
