@@ -23,12 +23,17 @@ function userInput() {
     ]).then(response => {
       switch (response.options) {
         case "View All Employees":
+          console.log("hahaha")
           db.fetchAllEmployees()
             .then(([employees]) => {
               console.log("\n");
               console.table(employees)
-            });
-            userInput();
+              userInput();
+            })
+            .catch(err => {
+              console.log("err = ", err)
+            })
+            
           break;
         case "Add Employee":
           addEmployee(() => getUserInput());
@@ -42,8 +47,9 @@ function userInput() {
             .then(([roles]) => {
               console.log("\n");
               console.table(roles)
+              userInput()
             });
-            userInput();
+            
           
           break;
         case "Add Role":
@@ -55,8 +61,9 @@ function userInput() {
             .then(([depts]) => {
               console.log("\n");
               console.table(depts)
+              userInput()
             });
-            userInput();
+            
           // });
           break;
         case "Add Department":
