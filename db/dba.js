@@ -24,10 +24,13 @@ class DBA {
         );
     }
 
-    addDepartment(name) {
-        return this.connection.promise().query(
-            "INSERT into department set ?", name
-        );
+    addDepartment(deptName) {let query = ""
+    db.query( `INSERT INTO department (id, dept_name) VALUES (${Math.floor(Math.random()*10000)},"${response.options}")`,(err)=>{
+        console.log(err)
+        console.log("")
+        db.query('SELECT * FROM department',(err,result)=>{console.table(result)})
+        return resolve()
+    })
     }
 
 }

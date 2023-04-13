@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const mysql = require("mysql");
+// const mysql = require("mysql");
 const cTable = require("console.table");
 const db = require("./db/dba");
 
@@ -67,7 +67,7 @@ function userInput() {
           // });
           break;
         case "Add Department":
-          prompt([
+          inquirer.prompt([
             {
               name: "name",
               message: "Give the name of the department"
